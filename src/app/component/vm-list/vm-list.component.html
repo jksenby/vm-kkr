@@ -1,0 +1,54 @@
+<p-table
+  [value]="virtualMachines"
+  dataKey="id"
+  [(selection)]="selectedProducts"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+      <th></th>
+      <th pResizableColumn>Name</th>
+      <th pResizableColumn>Public IP</th>
+      <th pResizableColumn>Private IP</th>
+      <th pResizableColumn>Location</th>
+      <th pResizableColumn>Created</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr>
+      <td>
+        <p-tableCheckbox [value]="data" />
+      </td>
+      <td>
+        <div style="display: flex; justify-content: center; width: 100%">
+          <i style="color: #53ff34; font-size: 9px" class="pi pi-circle-on"></i>
+        </div>
+      </td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.publicIp }}</td>
+      <td>{{ data.privateIp }}</td>
+      <td>
+        <div style="display: flex; align-items: center; gap: 5px">
+          <i class="pi pi-list"></i>{{ data.location }}
+        </div>
+      </td>
+      <td>{{ data.createdDate | date : "dd.MM.yyyy" }}</td>
+      <td>
+        <p-button
+          icon="pi pi-pencil"
+          [text]="true"
+          severity="secondary"
+        ></p-button>
+      </td>
+      <td>
+        <p-button
+          icon="pi pi-ellipsis-h"
+          [text]="true"
+          severity="secondary"
+        ></p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
