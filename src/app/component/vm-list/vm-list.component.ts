@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SelectItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -14,6 +14,7 @@ import { TableModule } from 'primeng/table';
   styleUrl: './vm-list.component.scss',
 })
 export class VmListComponent implements OnInit {
+  @Output() public openEditDialog: EventEmitter<any> = new EventEmitter<any>();
   selectedProducts: any[] = [];
 
   sortOptions: SelectItem[] = [];
@@ -76,6 +77,11 @@ export class VmListComponent implements OnInit {
   onFilter(dv: DataView, event: Event) {
     dv.filter((event.target as HTMLInputElement).value);
   }
+
+  onEmitOpenEditDialog(value: any) {
+    this.openEditDialog.emit(value);
+  }
+
   virtualMachines: any[] = [
     {
       id: 0,

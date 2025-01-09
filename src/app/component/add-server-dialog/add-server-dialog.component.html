@@ -1,1 +1,26 @@
-<form></form>
+<form [formGroup]="serverForm" (ngSubmit)="onSubmit()">
+  <div class="form-field">
+    <label>Name</label>
+    <input type="text" pInputText />
+  </div>
+  <div class="form-field">
+    <label>Public IP</label>
+    <input type="text" pInputText />
+  </div>
+  <div class="form-field">
+    <label>Private IP</label>
+    <input type="text" pInputText />
+  </div>
+  <div class="form-field">
+    <label>Location</label>
+    <p-select
+      [options]="locations"
+      optionValue="id"
+      optionLabel="name"
+      appendTo="body"
+    ></p-select>
+  </div>
+  <footer>
+    <p-button label="Save" icon="pi pi-save" type="submit"></p-button>
+  </footer>
+</form>

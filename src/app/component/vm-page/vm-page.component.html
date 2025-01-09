@@ -5,7 +5,7 @@
     icon="pi pi-filter"
     (onClick)="openFiltersDialog()"
     severity="secondary"
-  />
+  /><p-toast />
   <p-button
     label="Add Server"
     (onClick)="openAddServerDialog()"
@@ -15,12 +15,12 @@
 <p-tabs value="0">
   <p-tablist>
     <p-tab value="0">Servers</p-tab>
-    <p-tab value="1">Snapshots</p-tab>
-    <p-tab value="2">Backups</p-tab>
+    <p-tab value="1">Background</p-tab>
+    <p-tab value="2">Overview</p-tab>
   </p-tablist>
   <p-tabpanels>
     <p-tabpanel value="0">
-      <app-vm-list></app-vm-list>
+      <app-vm-list (openEditDialog)="openAddServerDialog($event)"></app-vm-list>
     </p-tabpanel>
     <p-tabpanel value="1">
       <p class="m-0">
